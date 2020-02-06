@@ -1,10 +1,14 @@
 // Initialize Firebase
+// not sure how to hide this from git and still have it work when deployed (would love a tutorial)
 //----------------------------------------------------------------
 var config = {
-    apiKey: "AIzaSyCUa3OmzBQAV9MHxQg6Pgl2s5533V5qjEI",
-    authDomain: "coder-bay-fee9d.firebaseapp.com",
-    databaseURL: "https://coder-bay-fee9d.firebaseio.com",
-    storageBucket: "coder-bay-fee9d.appspot.com"
+    apiKey: "AIzaSyDiXGX0sG4j9x4T3TvsWjTVNhvLma4rD0U",
+    authDomain: "trains-62036.firebaseapp.com",
+    databaseURL: "https://trains-62036.firebaseio.com",
+    projectId: "trains-62036",
+    storageBucket: "trains-62036.appspot.com",
+    messagingSenderId: "270238660377",
+    appId: "1:270238660377:web:39d898f1dbfac9ed01f788"
   };
   
   firebase.initializeApp(config);
