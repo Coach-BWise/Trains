@@ -18,6 +18,7 @@ var config = {
 //----------------------------------------------------------------
 
 $(document).ready(function() {
+    
 
     $('#submit').on('click', function(e){
         e.preventDefault();
@@ -43,9 +44,25 @@ $(document).ready(function() {
 
         // Next Train
         var nextTrain = moment().add(minutesTillTrain, "minutes").format("hh:mm");
-
-        var trainRow = "<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency+ "</td><td>" + nextTrain + "</td><td>" + minutesTillTrain + "</td></tr>";
-        $('#schedule').append(trainRow);
+    
+        database.ref().push({
+            trainName: trainName,
+            destination: destination,
+            initialTime: initialTime,
+            frequency: frequency,
+            nextTrain: nextTrain,
+            minutesTillTrain: minutesTillTrain
+        });
+        
     })
+
+    database.ref().on("child_added", function(snapshot) {
+       
+        var trainRow = "<tr><td>" + snapshot.val().trainName + "</td><td>" + snapshot.val().destination + "</td><td>" + snapshot.val().frequency+ "</td><td>" + snapshot.val().nextTrain + "</td><td>" + snapshot.val().minutesTillTrain + "</td></tr>";
+        $('#schedule').append(trainRow);
+        
+    }, function(errorObject) {
+        console.log("Errors handled: " + errorObject.code);
+    });
 })
 
